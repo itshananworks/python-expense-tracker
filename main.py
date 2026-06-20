@@ -1,5 +1,56 @@
 pengeluaran = {}
 
+import time
+
+
+"""EDIT PENGELUARAN"""
+def editpengeluaran(pengeluaran):
+    while True:
+        if pengeluaran == {}:
+            print("Tidak Ada Pengeluaran Yang Ingin Di Edit:(")
+            break
+        else:
+            print("=" * 25, "EDIT PENGELUARAN", "=" * 25)
+            print("1.Edit Jumlah Pengeluaran")
+            print("2.Liat Pengeluaran")
+            print("3.Edit Nama Pengeluaran")
+            print("4.Keluar Menu Edit")
+            pilihan_edit = input("Masukkan Pilihan Anda: ").lower()
+            if pilihan_edit not in [
+                "1", "edit jumlah", "edit jumlah pengeluaran",
+                "2", "lihat pengeluaran", "liat",
+                "3", "edit nama", "edit nama pengeluaran",
+                "4", "keluar", "keluar menu edit", "keluar menu edit"
+            ]:
+                print("Harap Masukkan Pilihan Yang Benar Yah:)")
+            else:
+                if pilihan_edit in ["4", "keluar", "keluar menu edit", "keluar menu edit"]:
+                    print("Kembali Menu Utama..")
+                    time.sleep(2)
+                    break
+                elif pilihan_edit in ["1", "edit jumlah", "edit jumlah pengeluaran"]:
+                        print("=" * 85)
+                        print("Harap Masukkan Nama/Judul Pengeluaran Yang Jumlah/Nominal Nya Ingin Anda Edit Ya:)")
+                        print("=" * 85)
+                        masukkan_nama_pengeluaran = input("Masukkan Nama/Judul Pengeluaran: ")
+                        if masukkan_nama_pengeluaran in pengeluaran:
+                            try:
+                                masukkan_jumlah_edit = int(input("Masukkan Jumlah/Nominal Yang Ingin Di Edit: "))
+                                pengeluaran.update({masukkan_nama_pengeluaran:masukkan_jumlah_edit})
+                                time.sleep(2)
+                                print(f"YEY:) Berhasil Mengedit Jumlah Pengeluaran Pada {masukkan_nama_pengeluaran}")
+                                time.sleep(2)
+                            except ValueError:
+                                print("Harap Masukkan Angka Yah:)")
+                                continue
+                        else:
+                            print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
+                            time.sleep(2)
+                            continue
+                elif pilihan_edit in ["2", "lihat pengeluaran", "liat"]:
+                    lihat_pengeluaran(pengeluaran)
+
+
 """HAPUS PENGELUARAN"""
 def hapuspengeluaran(pengeluaran):
     if pengeluaran == {}:
@@ -58,19 +109,21 @@ def main_menu_process():
             print("2.Lihat Pengeluaran")
             print("3.Total Pengeluaran")
             print("4.Hapus Pengeluaran")
-            print("5.Keluar")
+            print("5.Edit Pengeluaran")
+            print("6.Keluar")
             pilihan = input("Masukkan Pilihan Anda: ").lower()
             if pilihan not in [
                 "1", "tambah pengeluaran", "1.tambah pengeluaran",
                 "2", "lihat pengeluaran", "2.lihat pengeluaran",
                 "3", "total pengeluaran", "3.total pengeluaran",
                 "4", "hapus pengeluaran", "4.hapus pengeluaran",
-                "5", "keluar", "5.keluar"
+                "5", "edit pengeluaran", "5.edit pengeluaran",
+                "6", "keluar", "6.keluar"
             ]:
                 print("Pilihan Tidak Valid, Harap Memasukkan Pilihan Yang Valid")
                 continue
             else:
-                if pilihan in ["5", "keluar", "5.keluar"]:
+                if pilihan in ["6", "keluar", "6.keluar"]:
                     print("Jangan Lupa Catat Pengeluaranmu Ya:D")
                     break
                 elif pilihan in ["1", "tambah pengeluaran", "1.tambah pengeluaran"]:
@@ -81,6 +134,9 @@ def main_menu_process():
                     total_pengeluaran(pengeluaran)
                 elif pilihan in ["4", "hapus pengeluaran", "4.hapus pengeluaran"]:
                     hapuspengeluaran(pengeluaran)
+                elif pilihan in ["5", "edit pengeluaran", "5.edit pengeluaran"]:
+                    editpengeluaran(pengeluaran)
+
 
 
 
