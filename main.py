@@ -1,5 +1,20 @@
 pengeluaran = {}
 
+"""HAPUS PENGELUARAN"""
+def hapuspengeluaran(pengeluaran):
+    if pengeluaran == {}:
+        print("Tidak Ada Pengeluaran Yang Ingin Dihapus:(")
+    else:
+        try:
+            hapus_pengeluaran = input("Masukkan Nama/Judul Pengeluaran Untuk Dihapus: ")
+            pengeluaran.pop(hapus_pengeluaran)
+            print("Berhasil Menghapus Pengeluaran:)")
+        except KeyError:
+            print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
+
+
+
+
 """TOTAL PENGELUARAN"""
 def total_pengeluaran(pengeluaran):
     total = 0
@@ -42,18 +57,20 @@ def main_menu_process():
             print("1.Tambah Pengeluaran")
             print("2.Lihat Pengeluaran")
             print("3.Total Pengeluaran")
-            print("4.Keluar")
+            print("4.Hapus Pengeluaran")
+            print("5.Keluar")
             pilihan = input("Masukkan Pilihan Anda: ").lower()
             if pilihan not in [
                 "1", "tambah pengeluaran", "1.tambah pengeluaran",
                 "2", "lihat pengeluaran", "2.lihat pengeluaran",
                 "3", "total pengeluaran", "3.total pengeluaran",
-                "4", "keluar", "4.keluar"
+                "4", "hapus pengeluaran", "4.hapus pengeluaran",
+                "5", "keluar", "5.keluar"
             ]:
                 print("Pilihan Tidak Valid, Harap Memasukkan Pilihan Yang Valid")
                 continue
             else:
-                if pilihan in ["4", "keluar", "4.keluar"]:
+                if pilihan in ["5", "keluar", "5.keluar"]:
                     print("Jangan Lupa Catat Pengeluaranmu Ya:D")
                     break
                 elif pilihan in ["1", "tambah pengeluaran", "1.tambah pengeluaran"]:
@@ -62,6 +79,9 @@ def main_menu_process():
                     lihat_pengeluaran(pengeluaran)
                 elif pilihan in ["3", "total pengeluaran", "3.total pengeluaran"]:
                     total_pengeluaran(pengeluaran)
+                elif pilihan in ["4", "hapus pengeluaran", "4.hapus pengeluaran"]:
+                    hapuspengeluaran(pengeluaran)
+
 
 
 """PROSES SYSTEM"""
