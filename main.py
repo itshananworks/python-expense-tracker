@@ -29,9 +29,9 @@ def editpengeluaran(pengeluaran):
                     time.sleep(2)
                     break
                 elif pilihan_edit in ["1", "edit jumlah", "edit jumlah pengeluaran"]:
-                        print("=" * 85)
-                        print("Harap Masukkan Nama/Judul Pengeluaran Yang Jumlah/Nominal Nya Ingin Anda Edit Ya:)")
-                        print("=" * 85)
+                        print("=" * 98)
+                        print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
+                        print("=" * 98)
                         masukkan_nama_pengeluaran = input("Masukkan Nama/Judul Pengeluaran: ")
                         if masukkan_nama_pengeluaran in pengeluaran:
                             try:
@@ -49,6 +49,20 @@ def editpengeluaran(pengeluaran):
                             continue
                 elif pilihan_edit in ["2", "lihat pengeluaran", "liat"]:
                     lihat_pengeluaran(pengeluaran)
+                elif pilihan_edit in ["3", "edit nama", "edit nama pengeluaran"]:
+                    print("=" * 98)
+                    print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
+                    print("=" * 98)
+                    nama_lama_yang_mau_diedit = input("Masukkan Nama/Judul Pengeluaran Lama Yang Anda Ingin Edit: ")
+                    if nama_lama_yang_mau_diedit in pengeluaran:
+                        jumlah_pengeluaran = pengeluaran[nama_lama_yang_mau_diedit]
+                        nama_baru = input("Masukkan Nama/Judul Baru Untuk Diganti Nama: ")
+                        pengeluaran[nama_baru] = jumlah_pengeluaran
+                        pengeluaran.pop(nama_lama_yang_mau_diedit)
+                        print("YEY! Berhasil Mengedit Nama Baru:)")
+                        time.sleep(1)
+                    else:
+                        print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
 
 
 """HAPUS PENGELUARAN"""
