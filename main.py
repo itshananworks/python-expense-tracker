@@ -2,6 +2,29 @@ pengeluaran = {}
 
 import time
 
+"""FUNCTION EDIT JUMLAH PENGELUARAN"""
+def edit_jumlah_pengeluaran(pengeluaran):
+    while True:
+        print("=" * 98)
+        print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
+        print("=" * 98)
+        masukkan_nama_pengeluaran = input("Masukkan Nama Pengeluaran: ")
+        if masukkan_nama_pengeluaran in pengeluaran:
+            try:
+                masukkan_jumlah_pengeluaran_edit = int(input("Masukkan Jumlah/Nominal Yang Ingin Anda Edit: "))
+                pengeluaran.update({masukkan_nama_pengeluaran:masukkan_jumlah_pengeluaran_edit})
+                time.sleep(2)
+                print(f"YEY:) Berhasil Mengedit Jumlah Pengeluaran Pada {masukkan_nama_pengeluaran}")
+                time.sleep(1.5)
+                break
+            except ValueError:
+                print("Harap Masukkan Angka Yah:)")
+                continue
+        else:
+            print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
+            time.sleep(1.5)
+            break
+
 
 """EDIT PENGELUARAN"""
 def editpengeluaran(pengeluaran):
@@ -29,24 +52,7 @@ def editpengeluaran(pengeluaran):
                     time.sleep(2)
                     break
                 elif pilihan_edit in ["1", "edit jumlah", "edit jumlah pengeluaran"]:
-                        print("=" * 98)
-                        print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
-                        print("=" * 98)
-                        masukkan_nama_pengeluaran = input("Masukkan Nama/Judul Pengeluaran: ")
-                        if masukkan_nama_pengeluaran in pengeluaran:
-                            try:
-                                masukkan_jumlah_edit = int(input("Masukkan Jumlah/Nominal Yang Ingin Di Edit: "))
-                                pengeluaran.update({masukkan_nama_pengeluaran:masukkan_jumlah_edit})
-                                time.sleep(2)
-                                print(f"YEY:) Berhasil Mengedit Jumlah Pengeluaran Pada {masukkan_nama_pengeluaran}")
-                                time.sleep(2)
-                            except ValueError:
-                                print("Harap Masukkan Angka Yah:)")
-                                continue
-                        else:
-                            print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
-                            time.sleep(2)
-                            continue
+                    edit_jumlah_pengeluaran(pengeluaran)
                 elif pilihan_edit in ["2", "lihat pengeluaran", "liat"]:
                     lihat_pengeluaran(pengeluaran)
                 elif pilihan_edit in ["3", "edit nama", "edit nama pengeluaran"]:
