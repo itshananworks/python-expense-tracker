@@ -2,6 +2,28 @@ pengeluaran = {}
 
 import time
 
+"""FUNCTION EDIT NAMA PENGELUARAN"""
+def edit_nama_pengeluaran(pengeluaran):
+    while True:
+        print("=" * 98)
+        print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
+        print("=" * 98)
+        nama_lama_yang_mau_diedit = input("Masukkan Nama/Judul Pengeluaran Lama Yang Anda Ingin Edit: ")
+        if nama_lama_yang_mau_diedit in pengeluaran:
+            jumlah_pengeluaran = pengeluaran[nama_lama_yang_mau_diedit]
+            nama_baru = input("Masukkan Nama/Judul Baru Untuk Diganti Nama: ")
+            pengeluaran[nama_baru] = jumlah_pengeluaran
+            pengeluaran.pop(nama_lama_yang_mau_diedit)
+            print("YEY! Berhasil Mengedit Nama Baru:)")
+            time.sleep(1)
+            break
+        else:
+            print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
+            time.sleep(1.5)
+            break
+
+
+
 """FUNCTION EDIT JUMLAH PENGELUARAN"""
 def edit_jumlah_pengeluaran(pengeluaran):
     while True:
@@ -56,19 +78,7 @@ def editpengeluaran(pengeluaran):
                 elif pilihan_edit in ["2", "lihat pengeluaran", "liat"]:
                     lihat_pengeluaran(pengeluaran)
                 elif pilihan_edit in ["3", "edit nama", "edit nama pengeluaran"]:
-                    print("=" * 98)
-                    print("Harap Masukkan Nama/Judul Yang Ada Di Riwayat Pengeluaranmu Ya, Agar Tidak Error Saat Diedit:)")
-                    print("=" * 98)
-                    nama_lama_yang_mau_diedit = input("Masukkan Nama/Judul Pengeluaran Lama Yang Anda Ingin Edit: ")
-                    if nama_lama_yang_mau_diedit in pengeluaran:
-                        jumlah_pengeluaran = pengeluaran[nama_lama_yang_mau_diedit]
-                        nama_baru = input("Masukkan Nama/Judul Baru Untuk Diganti Nama: ")
-                        pengeluaran[nama_baru] = jumlah_pengeluaran
-                        pengeluaran.pop(nama_lama_yang_mau_diedit)
-                        print("YEY! Berhasil Mengedit Nama Baru:)")
-                        time.sleep(1)
-                    else:
-                        print("Tidak Ada Nama/Judul Pengeluaran Seperti Itu Di Riwayat Pengeluaranmu:(")
+                    edit_nama_pengeluaran(pengeluaran)
 
 
 """HAPUS PENGELUARAN"""
