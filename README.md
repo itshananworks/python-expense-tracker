@@ -43,7 +43,6 @@ This project was built to practice:
 
 ## Future Improvements
 
-* Save data to TXT files
 * Save data to JSON
 * Add expense categories
 * Delete expenses
